@@ -2,14 +2,13 @@ import java.math.BigInteger;
 
 public class IntToWord
 {
-  private static final int SPACE = 32;
-  private static final int UPPERCASE = 65; //uppercase starting point
+  private static final int SPACE = 32; //space starting point
   private static final int LOWERCASE = 122; //lowercase ending point
   private static final boolean DEBUGGING = false;
 
   public static void main(String [] args)
   {
-    BigInteger mysterWord = new BigInteger("7332761111181013289111117");
+    BigInteger mysterWord = new BigInteger("8710110899111109101321161113210912132711051167211798");
     BigInteger temp = mysterWord;
     String retVal = "";
     Integer modBy = 100;
@@ -29,7 +28,7 @@ public class IntToWord
         System.out.println("The ending digits are " + endingDigits.toString());
       }
 
-      if(isSpace(endingDigits) || isALetter(endingDigits))
+      if(isValid(endingDigits))
       {
         if(DEBUGGING)
         {
@@ -104,13 +103,8 @@ public class IntToWord
     System.out.println("The mystery string is: " + retVal);
   }
 
-  private static boolean isSpace(BigInteger given)
+  private static boolean isValid(BigInteger given)
   {
-    return given.intValue() == SPACE;
-  }
-
-  private static boolean isALetter(BigInteger given)
-  {
-    return given.intValue() >= UPPERCASE && given.intValue() <= LOWERCASE;
+    return given.intValue() >= SPACE && given.intValue() <= LOWERCASE;
   }
 }
